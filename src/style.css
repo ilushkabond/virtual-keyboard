@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+
+:root {
+  --btn-size: 60px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1024px;
+  font-family: 'Cutive Mono', monospace;
+  color: #711c91;
+  background-color: #091833;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1024px;
+  margin: 20px auto;
+}
+
+.textarea {
+  height: 200px;
+  margin-bottom: 40px;
+  outline: none;
+  color: #0abdc6;
+  background-color: #711c91;
+  border: 0;
+  font-size: 24px;
+  padding: 10px;
+  caret-color: #133e7c;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.button {
+    cursor: pointer;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    color: #0abdc6;
+    background-color: #133e7c;
+    font-size: 100%;
+    border-radius: 5px;
+    margin-left: calc(var(--btn-size) * 0.15);
+    transition: 0.5s ease-in;
+    animation: onkeyup 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.button--tab {
+  width: calc(var(--btn-size) * 1.25);
+}
+
+.button--del {
+  width: calc(var(--btn-size) * 1.1);;
+}
+
+.button--w-86 {
+  width: calc(var(--btn-size) * 2.15);
+}
+
+.button--md-size {
+  width: calc(var(--btn-size) * 2.5);
+}
+
+.button--lg-size {
+  width: calc(var(--btn-size) * 8.25);
+}
+
+.button:hover {
+  background:	#711c91;
+}
+
+.button--active {
+  background:	#711c91;
+}
+
+.description {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.animation {
+  animation: animaStart 0.5s linear;
+}
+
+.animation-end {
+  animation: animaEnd 0.5s linear;
+}
+
+@keyframes animaStart {
+	0% {
+		background:	#133e7c;
+	}
+
+	100% {
+		background:	#711c91;
+	}
+}
+
+@keyframes animaEnd {
+  0% {
+    background:	#711c91;
+  }
+
+	100% {
+		background:	#133e7c;
+	}
+}
