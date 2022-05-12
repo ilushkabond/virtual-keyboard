@@ -1,20 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
+:root {
+  --btn-size: 60px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-width: 1024px;
-    font-family: 'Cutive Mono', monospace;
+  min-width: 1024px;
+  font-family: 'Cutive Mono', monospace;
+  background-color: #091833;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1024px;
+  margin: 20px auto;
+}
+
+.textarea {
+  height: 200px;
+  margin-bottom: 40px;
+  outline: none;
+  color: #0abdc6;
+  background-color: #711c91;
+  border: 0;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
 
 .button {
     cursor: pointer;
-    width: 60px;
-    height: 60px;
-    background-color: #999;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    color: #0abdc6;
+    background-color: #133e7c;
+    font-size: 100%;
     border-radius: 5px;
+    margin-left: calc(var(--btn-size) * 0.15);
+}
+
+.button--tab {
+  width: calc(var(--btn-size) * 1.25);
+}
+
+.button--del {
+  width: calc(var(--btn-size) * 1.1);;
+}
+
+.button--w-86 {
+  width: calc(var(--btn-size) * 2.15);
+}
+
+.button--md-size {
+  width: calc(var(--btn-size) * 2.5);
+}
+
+.button--lg-size {
+  width: calc(var(--btn-size) * 8.25);
+}
+
+.button:hover {
+  background:	#711c91;
 }

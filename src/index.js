@@ -1,5 +1,3 @@
-alert('Не успел доделать до дедлайна, извиняюсь, пожалуйста, не проверяйте мою работу до четверга, если что, напишите в discord: ILUSHKABOND#1580');
-
 import './style.css';
 
 const KEYBOARD = [['Backquote','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6','Digit7','Digit8','Digit9','Digit0','Minus','Equal','Backspace'],['Tab','KeyQ','KeyW','KeyE','KeyR','KeyT','KeyY','KeyU','KeyI','KeyO','KeyP','BracketLeft','BracketRight','Backslash','Delete'],['CapsLock','KeyA','KeyS','KeyD','KeyF','KeyG','KeyH','KeyJ','KeyK','KeyL','Semicolon','Quote','Enter'],['ShiftLeft','KeyZ','KeyX','KeyC','KeyV','KeyB','KeyN','KeyM','Comma','Period','Slash','ArrowUp','ShiftRight'],['ControlLeft','MetaLeft','AltLeft','Space','AltRight','ArrowLeft','ArrowDown','ArrowRight','ControlRight']];
@@ -10,22 +8,58 @@ class Element {
     constructor(parentNode, tagName = 'div', content = null, className = null) {
         const element = document.createElement(tagName);
         element.textContent = content;
-        element.className = className;
+        if (Array.isArray(className)) {
+          className.filter(nonEmptyClass => nonEmptyClass !== '').forEach(classApplied => element.classList.add(classApplied));
+        } else {
+          element.className = className;
+        }
         parentNode.appendChild(element);
         this.node = element;
     }
+}
+
+function switchKeyClass(key) {
+  let appliedClass = '';
+  const classPrefix = 'button'
+  switch (key) {
+    case 'Backspace':
+    case 'CapsLock':
+    case 'ShiftLeft':
+      appliedClass = `${classPrefix}--md-size`;
+      break;
+    case 'Tab':
+      appliedClass = `${classPrefix}--tab`;
+    break;
+    case 'Delete':
+      appliedClass = `${classPrefix}--del`;
+    break;
+    case 'Space':
+      appliedClass = `${classPrefix}--lg-size`;
+      break;
+    case 'ShiftRight':
+    case 'Enter':
+      appliedClass = `${classPrefix}--w-86`;
+    break;
+    default:
+      appliedClass = '';
+    break;
+  }
+
+  return appliedClass;
 }
 
 function load() {
     const LANG = 'en';
     const keyMap = LANG === 'en' ? ENG_MAP : RUS_MAP;
     const container = new Element(document.body, 'div', '', 'container');
-    
+
+    const textArea = new Element(container.node, 'textarea', '', 'textarea');
+
     KEYBOARD.forEach(row => {
         const rowContainer = new Element(container.node, 'div', '', 'row');
         row.forEach(key => {
-            const textContent = keyMap[key].lower
-            const keyboardButton = new Element(rowContainer.node, 'button', textContent, 'button');
+            const textContent = keyMap[key].lower;
+            const keyboardButton = new Element(rowContainer.node, 'button', textContent, ['button', switchKeyClass(key)]);
         })
     })
 }
