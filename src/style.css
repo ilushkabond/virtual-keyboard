@@ -13,6 +13,7 @@
 body {
   min-width: 1024px;
   font-family: 'Cutive Mono', monospace;
+  color: #711c91;
   background-color: #091833;
 }
 
@@ -33,6 +34,7 @@ body {
   border: 0;
   font-size: 24px;
   padding: 10px;
+  caret-color: #133e7c;
 }
 
 .row {
@@ -51,6 +53,8 @@ body {
     font-size: 100%;
     border-radius: 5px;
     margin-left: calc(var(--btn-size) * 0.15);
+    transition: 0.5s ease-in;
+    animation: onkeyup 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .button--tab {
@@ -75,4 +79,44 @@ body {
 
 .button:hover {
   background:	#711c91;
+}
+
+.button--active {
+  background:	#711c91;
+}
+
+.description {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.animation {
+  animation: animaStart 0.5s linear;
+}
+
+.animation-end {
+  animation: animaEnd 0.5s linear;
+}
+
+@keyframes animaStart {
+	0% {
+		background:	#133e7c;
+	}
+
+	100% {
+		background:	#711c91;
+	}
+}
+
+@keyframes animaEnd {
+  0% {
+    background:	#711c91;
+  }
+
+	100% {
+		background:	#133e7c;
+	}
 }
